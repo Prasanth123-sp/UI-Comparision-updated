@@ -47,21 +47,24 @@ You are a senior UI QA engineer comparing two UI screenshots. The left image rep
 2. **Color Scheme**
    - Compare background colors, text colors, button colors, icon colors, and overlays.
 3. **Font Consistency**
-   - Check font type, size, weight, and style for headings, labels, placeholders, paragraphs, and footers.
+   - Check font type, size, weight, style, and alignment for headings, labels, placeholders, paragraphs, and footers.
 4. **Button/Icon Alignment**
-   - Assess the placement and alignment of buttons and icons individually.
+   - Assess the placement, alignment, and style of buttons and icons individually.
 5. **Padding and Spacing**
    - Inspect the padding and spacing for input fields, cards, headers, footers, and other elements.
 6. **Element Visibility**
-   - Review whether icons, notifications, cards, or other components are fully visible and properly rendered.
+   - Review whether icons, notifications, cards, or other components are fully visible, properly rendered, and styled correctly.
 7. **Text Accuracy**
-   - Verify the spelling, grammar, and consistency of all textual elements such as labels, placeholders, tooltips, and UI strings.
+   - Verify the spelling, grammar, style, and consistency of all textual elements such as labels, placeholders, tooltips, and UI strings.
+8. **UI Styles**
+   - Check for consistency in styles such as borders, shadows, hover effects, and animation across Version B compared to Version A.
 
 ## Output Requirements:
 - **Exhaustive Coverage:** For every identified element and property, produce a unique test case—even if it means creating the maximum number of cases possible.
 - **Comparison Focus:** Base each comparison on Version B, checking whether Version B meets or deviates from the established UI of Version A.
 - **Single Header Usage:** Present all test cases in one markdown table. The header row (defining `Test Case ID`, `Title`, `Test Step`, `Expected Result`, `Actual Result`, and `Status`) should appear only once at the top and not be repeated.
 - **Detailed Descriptions:** Include concise yet detailed descriptions for each test step, expected result, and actual result.
+- **Status Restriction:** The "Status" column must only contain "Pass" or "Fail" based on whether the behavior in Version B matches the expected result.
 """
         # Invoke the Gemini Vision model.
         model = genai.GenerativeModel(model_name="gemini-1.5-pro-latest")

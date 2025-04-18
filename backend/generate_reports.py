@@ -76,10 +76,6 @@ def generate_report(comparison_result, screenshot_path, ref_path, merged_image_p
                 color: red;
                 font-weight: bold;
             }}
-            .na {{
-                color: blue;
-                font-weight: bold;
-            }}
             .image-container {{
                 display: flex;
                 justify-content: space-between;
@@ -164,17 +160,12 @@ def generate_report(comparison_result, screenshot_path, ref_path, merged_image_p
                 <td class="fail">Failed</td>
                 <td class="fail">{failed_count}</td>
             </tr>
-            <tr>
-                <td class="na">N/A</td>
-                <td class="na">{na_count}</td>
-            </tr>
         </table>
         <button onclick="downloadExcel()">Download Excel Report</button>
         <h3>Comparison Results</h3>
         <div class="filter-buttons">
             <button onclick="filterResults('pass')">Show Pass</button>
             <button onclick="filterResults('fail')">Show Fail</button>
-            <button onclick="filterResults('na')">Show N/A</button>
             <button onclick="showAllResults()">Show All</button>
         </div>
         <table>
@@ -205,8 +196,6 @@ def generate_report(comparison_result, screenshot_path, ref_path, merged_image_p
                         report_content += f'<td class="pass">{cell_content}</td>'
                     elif "fail" in cell_content.lower():
                         report_content += f'<td class="fail">{cell_content}</td>'
-                    elif "n/a" in cell_content.lower():
-                        report_content += f'<td class="na">{cell_content}</td>'
                     else:
                         report_content += f"<td>{cell_content}</td>"
                 else:
@@ -261,7 +250,6 @@ def generates_report(comparison_result, screenshot_path, ref_path, merged_image_
     # Count the test results
     passed_count = df['Status'].str.lower().str.contains('pass').sum()
     failed_count = df['Status'].str.lower().str.contains('fail').sum()
-    na_count = df['Status'].str.lower().str.contains('n/a').sum()
     total_count = len(df)
 
     # Build the HTML report
@@ -297,10 +285,6 @@ def generates_report(comparison_result, screenshot_path, ref_path, merged_image_
             }}
             .fail {{
                 color: red;
-                font-weight: bold;
-            }}
-            .na {{
-                color: blue;
                 font-weight: bold;
             }}
             .image-container {{
@@ -386,17 +370,12 @@ def generates_report(comparison_result, screenshot_path, ref_path, merged_image_
                 <td class="fail">Failed</td>
                 <td class="fail">{failed_count}</td>
             </tr>
-            <tr>
-                <td class="na">N/A</td>
-                <td class="na">{na_count}</td>
-            </tr>
         </table>
         <button onclick="downloadExcel()">Download Excel Report</button>
         <h3>Comparison Results</h3>
         <div class="filter-buttons">
             <button onclick="filterResults('pass')">Show Pass</button>
             <button onclick="filterResults('fail')">Show Fail</button>
-            <button onclick="filterResults('na')">Show N/A</button>
             <button onclick="showAllResults()">Show All</button>
         </div>
         <table>
@@ -427,8 +406,6 @@ def generates_report(comparison_result, screenshot_path, ref_path, merged_image_
                         report_content += f'<td class="pass">{cell_content}</td>'
                     elif "fail" in cell_content.lower():
                         report_content += f'<td class="fail">{cell_content}</td>'
-                    elif "n/a" in cell_content.lower():
-                        report_content += f'<td class="na">{cell_content}</td>'
                     else:
                         report_content += f"<td>{cell_content}</td>"
                 else:
